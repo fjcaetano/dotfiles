@@ -1,0 +1,14 @@
+[user]
+	name = Flávio Caetano
+	email = flavio@vieiracaetano.com
+[push]
+	default = simple
+[diff]
+	external = ~/bin//git-diff-cmd.sh
+	tool = opendiff
+[merge]
+	tool = opendiff
+[core]
+	editor = /usr/local/bin/atom -w
+[credential]
+	helper = osxkeychain
