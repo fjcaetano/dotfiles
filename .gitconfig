@@ -4,7 +4,7 @@
 [push]
 	default = simple
 [diff]
-	external = ~/bin//git-diff-cmd.sh
+	external = ~/bin/git-diff-cmd.sh
 	tool = opendiff
 [merge]
 	tool = opendiff
