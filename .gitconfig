@@ -1,6 +1,8 @@
 [user]
 	name = Flávio Caetano
 	email = flavio@vieiracaetano.com
+	signing = C8FBDDE9
+	signingkey = 0B7A5237669A94E23D1AE5386AB6153CC4ADDD78
 [push]
 	default = simple
 [diff]
@@ -8,7 +10,12 @@
 	tool = opendiff
 [merge]
 	tool = opendiff
-[core]
-	editor = /usr/local/bin/atom -w
+#[core]
+#	editor = /usr/local/bin/atom -w
+
 [credential]
 	helper = osxkeychain
+[gpg]
+	program = gpg2
+#[commit]
+#	gpgsign = true

@@ -78,6 +78,8 @@ export LC_ALL="en_US.UTF-8"
 
 alias grb='git rebase'
 alias gdel='git reset --hard && git clean -df'
+alias gclog='git log $(git describe --abbrev=0)..HEAD --pretty=oneline --abbrev-commit'
+alias gtlog='gts -m "$(gclog)"'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -88,3 +90,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Rake
 alias rake="noglob rake"
+
+
+# Android
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+export PATH="$HOME/.fastlane/bin:$PATH"
