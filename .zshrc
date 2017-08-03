@@ -48,14 +48,16 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pod brew python osx xcode)
+plugins=(git pod brew python osx xcode yarn emulator)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rbenv/bin:$HOME/Library/Python/2.7/lib/python/site-packages"
-eval "$(rbenv init -)"
+if [[ $(which rbenv &> /dev/null) ]]; then
+  eval "$(rbenv init -)";
+fi;
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -80,6 +82,7 @@ alias grb='git rebase'
 alias gdel='git reset --hard && git clean -df'
 alias gclog='git log $(git describe --abbrev=0)..HEAD --pretty=oneline --abbrev-commit'
 alias gtlog='gts -m "$(gclog)"'
+alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -98,3 +101,8 @@ export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 export PATH="$HOME/.fastlane/bin:$PATH"
+
+alias emulator="$HOME/Library/Android/sdk/tools/emulator"
+
+export GPG_TTY=$(tty)
+
