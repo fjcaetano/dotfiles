@@ -54,10 +54,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rbenv/bin:$HOME/Library/Python/2.7/lib/python/site-packages"
-if [[ $(which rbenv &> /dev/null) ]]; then
-  eval "$(rbenv init -)";
-fi;
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rbenv/bin:$HOME/Library/Python/2.7/lib/python/site-packages"
+which rbenv &> /dev/null && eval "$(rbenv init -)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -106,3 +104,14 @@ alias emulator="$HOME/Library/Android/sdk/tools/emulator"
 
 export GPG_TTY=$(tty)
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+
+chpwd() {
+  # VIRTUAL ENVS
+  if [ -f venv/bin/activate ]; then
+    source venv/bin/activate
+  fi;
+}
