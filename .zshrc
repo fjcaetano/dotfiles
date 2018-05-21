@@ -85,6 +85,7 @@ alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
 
 alias gbdp='f() { gb -d $1 && gp --no-verify origin :$1}; f'
 compdef _git gbdp=git-checkout
+setopt complete_aliases
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
