@@ -113,6 +113,8 @@ export GPG_TTY=$(tty)
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Enable `code` from VS Code
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 chpwd() {
   # VIRTUAL ENVS
@@ -124,3 +126,6 @@ chpwd() {
 # Zsh autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Disable Fastlane checks
+export FASTLANE_HIDE_CHANGELOG=1
+export FASTLANE_SKIP_UPDATE_CHECK=1
