@@ -80,12 +80,24 @@ export LC_ALL="en_US.UTF-8"
 alias grb='git rebase'
 alias gdel='git reset --hard && git clean -df'
 alias gclog='git log $(git describe --abbrev=0)..HEAD --pretty=oneline --abbrev-commit'
-alias gtlog='gts -m "\n$(gclog)"'
+alias gtlog='gts -m "$(gclog)"'
 alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
 
-alias gbdp='f() { gb -d $1 && gp --no-verify origin :$1}; f'
+gbdp() { gb -d $1 && gp --no-verify origin :$1}
 compdef _git gbdp=git-checkout
-setopt complete_aliases
+#setopt complete_aliases
+
+eqxp() {
+  gco develop && \
+  gl && \
+  gco $1 && \
+  grb develop && \
+  gpp -f $2 && \
+  gco develop && \
+  gm $1 && \
+  gp --no-verify
+}
+compdef _git eqxp=git-checkout
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -129,3 +141,12 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Disable Fastlane checks
 export FASTLANE_HIDE_CHANGELOG=1
 export FASTLANE_SKIP_UPDATE_CHECK=1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/flaviocaetano/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/flaviocaetano/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/flaviocaetano/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/flaviocaetano/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Alias to react-native link
+alias rnl='react-native link'
