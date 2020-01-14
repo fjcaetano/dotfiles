@@ -105,10 +105,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # added by travis gem
 [ -f /Users/flaviocaetano/.travis/travis.sh ] && source /Users/flaviocaetano/.travis/travis.sh
 
-
 # Rake
 alias rake="noglob rake"
-
 
 # Android
 export ANDROID_HOME=${HOME}/Library/Android/sdk
@@ -118,12 +116,10 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 alias emulator="$HOME/Library/Android/sdk/tools/emulator"
+alias arr="adb shell input text \"RR\""
+alias arn="adb shell input keyevent 82"
 
 export GPG_TTY=$(tty)
-
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Enable `code` from VS Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -154,3 +150,6 @@ alias rnl='react-native link'
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
