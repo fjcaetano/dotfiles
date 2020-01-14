@@ -1,12 +1,8 @@
 [user]
-	name = Flávio Caetano
-	email = flavio@vieiracaetano.com
-	signing = C8FBDDE9
-	signingkey = 0B7A5237669A94E23D1AE5386AB6153CC4ADDD78
+        name = Flávio Caetano
+        email = caetano@work.co
 [push]
 	default = simple
-[diff]
-	external = ~/bin/git-diff-cmd.sh
 	tool = opendiff
 [merge]
 	tool = opendiff
