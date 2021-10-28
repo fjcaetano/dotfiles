@@ -82,6 +82,7 @@ alias gdel='git reset --hard && git clean -df'
 alias gclog='git log $(git describe --abbrev=0)..HEAD --pretty=oneline --abbrev-commit'
 alias gtlog='gts -m "$(gclog)"'
 alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias gfup='gc --fixup'
 
 gbdp() { gb -d $1 && gp --no-verify origin :$1}
 compdef _git gbdp=git-checkout
