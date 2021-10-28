@@ -1,15 +1,22 @@
 [user]
-        name = Flávio Caetano
-        email = caetano@work.co
+	name = Flávio Caetano
+	email = caetano@work.co
 [push]
 	default = simple
 	tool = opendiff
 [merge]
 	tool = opendiff
+	conflictstyle = diff3
 [core]
 	editor = nano
+	ignore = case
+	ignorecase = false
 
 [credential]
 	helper = osxkeychain
-[gpg]
-	program = gpg2
+[rebase]
+	autosquash = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
