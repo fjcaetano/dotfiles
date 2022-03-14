@@ -159,3 +159,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export PROVISIONING_PROFILES="$HOME/Library/MobileDevice/Provisioning Profiles"
 
+alias ddxcode="killall Xcode; rm -rf ~/Library/Developer/Xcode/DerivedData/ && rm -rf ~/Library/Developer/Xcode/watchOS\ DeviceSupport/ && rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport/"
