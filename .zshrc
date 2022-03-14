@@ -83,6 +83,7 @@ alias gclog='git log $(git describe --abbrev=0)..HEAD --pretty=oneline --abbrev-
 alias gtlog='gts -m "$(gclog)"'
 alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gfup='gc --fixup'
+alias gcan='gc --amend --no-edit'
 
 gbdp() { gb -d $1 && gp --no-verify origin :$1}
 compdef _git gbdp=git-checkout
