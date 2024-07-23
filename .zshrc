@@ -133,13 +133,6 @@ export GPG_TTY=$(tty)
 # Enable `code` from VS Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-chpwd() {
-  # VIRTUAL ENVS
-  if [ -f venv/bin/activate ]; then
-    source venv/bin/activate
-  fi;
-}
-
 # Zsh autosuggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
