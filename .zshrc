@@ -58,6 +58,13 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:
 which rbenv &> /dev/null && eval "$(rbenv init -)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# New Terminal Window
+new() {
+    osascript -e 'tell app "Terminal"
+        do script "clear"
+    end tell'
+}
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
