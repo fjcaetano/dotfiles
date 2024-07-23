@@ -134,7 +134,7 @@ export GPG_TTY=$(tty)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Zsh autosuggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Disable Fastlane checks
 export FASTLANE_HIDE_CHANGELOG=1
