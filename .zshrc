@@ -158,3 +158,9 @@ alias proxyman_prompt_info="/Users/flaviocaetano/projects/dotfiles/bin/prompt_in
 
 # Custom Prompt
 export PROMPT='%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) $(proxyman_prompt_info)%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+# Python
+eval "$(pyenv init --path)" 
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
