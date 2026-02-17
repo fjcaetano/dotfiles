@@ -85,25 +85,21 @@ alias gtlog='gts -m "$(gclog)"'
 alias gpp='gp -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gfup='gc --fixup'
 alias gcan='gc --amend --no-edit'
+gn() {
+  dev=$(git config core.dev-branch);
+  curr=$(git rev-parse --abbrev-ref HEAD);
+  if [ "$curr" = "$dev" ]; then
+    echo "Already on $dev; nothing to delete.";
+  else
+    git checkout "$dev" && git branch -D "$curr";
+  fi;
+};
 
 gbdp() { gb -d $1 && gp --no-verify origin :$1}
 compdef _git gbdp=git-checkout
 #setopt complete_aliases
 
-eqxp() {
-  gco develop && \
-  gl && \
-  gco $1 && \
-  grb develop && \
-  gpp -f $2 && \
-  gco develop && \
-  gm $1 && \
-  gp --no-verify
-}
 compdef _git eqxp=git-checkout
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # added by travis gem
 [ -f /Users/flaviocaetano/.travis/travis.sh ] && source /Users/flaviocaetano/.travis/travis.sh
