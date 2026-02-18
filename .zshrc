@@ -169,9 +169,9 @@ export PROVISIONING_PROFILES="$HOME/Library/MobileDevice/Provisioning Profiles"
 alias ddxcode="killall Xcode; rm -rf ~/Library/Developer/Xcode/DerivedData/ && rm -rf ~/Library/Developer/Xcode/watchOS\ DeviceSupport/ && rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport/"
 
 # Proxyman Certs
-alias proxyman='set -a && source "/Users/flaviocaetano/.proxyman/proxyman_env_automatic_setup.sh" && set +a'
-alias proxyman_deactivate="set -a && source /Users/flaviocaetano/projects/dotfiles/bin/proxyman_deactivate.sh && set +a"
-alias proxyman_prompt_info="/Users/flaviocaetano/projects/dotfiles/bin/prompt_info.sh"
+alias proxyman='set -a && source "/Users/flavio.caetano/.proxyman/proxyman_env_automatic_setup.sh" && set +a'
+alias proxyman_deactivate="set -a && source /Users/flavio.caetano/projects/dotfiles/bin/proxyman_deactivate.sh && set +a"
+alias proxyman_prompt_info="/Users/flavio.caetano/projects/dotfiles/bin/prompt_info.sh"
 
 # Custom Prompt
 export PROMPT='%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) $(proxyman_prompt_info)%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
