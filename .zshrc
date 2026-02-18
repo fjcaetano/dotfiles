@@ -45,14 +45,20 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pod brew python macos xcode yarn emulator)
+plugins=(git pod brew python macos xcode yarn) # emulator
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rbenv/bin:$HOME/Library/Python/2.7/lib/python/site-packages"
-which rbenv &> /dev/null && eval "$(rbenv init -)"
+
+# Lazy-load rbenv (only initialized when first called)
+rbenv() {
+  unfunction rbenv
+  eval "$(command rbenv init -)"
+  rbenv "$@"
+}
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # New Terminal Window
@@ -123,29 +129,40 @@ export GPG_TTY=$(tty)
 # Enable `code` from VS Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# Zsh autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Zsh autosuggestions (hardcoded path to avoid slow $(brew --prefix) call)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Disable Fastlane checks
 export FASTLANE_HIDE_CHANGELOG=1
 export FASTLANE_SKIP_UPDATE_CHECK=1
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/flaviocaetano/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/flaviocaetano/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/flaviocaetano/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/flaviocaetano/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Alias to react-native link
 alias rnl='npx react-native link'
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Lazy-load NVM (major speedup - NVM is very slow to load)
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}/.nvm"
+
+# Lazy-load nvm, node, npm, npx, yarn
+_lazy_load_nvm() {
+  unfunction nvm node npm npx yarn 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+for cmd in nvm node npm npx yarn; do
+  eval "$cmd() { _lazy_load_nvm; $cmd \"\$@\" }"
+done
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session
+
+# Lazy-load RVM (only initialized when first called)
+rvm() {
+  unfunction rvm
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+  rvm "$@"
+}
 
 export PROVISIONING_PROFILES="$HOME/Library/MobileDevice/Provisioning Profiles"
 
@@ -159,8 +176,12 @@ alias proxyman_prompt_info="/Users/flaviocaetano/projects/dotfiles/bin/prompt_in
 # Custom Prompt
 export PROMPT='%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) $(proxyman_prompt_info)%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
-# Python
-which pyenv &> /dev/null && eval "$(pyenv init --path)" 
+# Lazy-load pyenv (only initialized when first called)
+pyenv() {
+  unfunction pyenv
+  eval "$(command pyenv init --path)"
+  pyenv "$@"
+} 
 
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
