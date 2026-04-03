@@ -1,6 +1,7 @@
 [user]
 	name = Flávio Caetano
 	email = caetano@work.co
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1OND/hRaIAN2rj4wf+ccb2eRvX/0woA+SVurnGG4kF
 [push]
 	default = simple
 	tool = opendiff
