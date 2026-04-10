@@ -217,3 +217,5 @@ _version_manager_auto_use() {
 
 add-zsh-hook chpwd _version_manager_auto_use
 _version_manager_auto_use  # run once on new terminal open
+  
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
